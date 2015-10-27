@@ -4,7 +4,11 @@
 
 <Using SUSYHIT>
   cd susyhit
-  modify susyhit.in and SLHA.in files
+  make
+  modify susyhit.in
+  modify suspect2_lha.in (or slhaspectrum.in when you do not use SUSPECT)
+  ./run
+
   run.sh (SPheno-SDECAY-HDECAY)
   ./run.sh (SOFTSUSY-SDECAY-HDECAY)
 

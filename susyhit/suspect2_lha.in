@@ -66,32 +66,32 @@ Block MINPAR  # specific model input parameters
 #     11   1.      # cHd : weight of m0 for Hd 
 #
 Block EXTPAR  # general MSSM input (! IF uncommented, values replace MINPAR ones)
-        #  0     -1   # EWSB_scale          
-        #  1     3E+02   # M_1                 
-        #  2     5E+02   # M_2                 
-        #  3     1.5E+03   # M_3                 
-        # 11     1E+03   # A_t                 
-        # 12     1E+02   # A_b                 
-        # 13     1E+02   # A_tau               
-        # 14     1E+02   # A_u                 
-        # 15     1E+02   # A_d                 
-        # 16     1E+02   # A_e                 
-        # 23     2E+05   # mu(EWSB)            
-        # 26     2E+05   # MA_pole                  
-        # 25     5.00000000E+00   # tanbeta(MZ)         
-        # 31     2E+05   # M_eL                
-        # 32     2E+05   # M_muL               
-        # 33     2E+05   # M_tauL              
-        # 34     2E+05   # M_eR                
-        # 35     2E+05   # M_muR               
-        # 36     2E+05   # M_tauR              
-        # 41     2E+05   # M_q1L               
-        # 42     2E+05   # M_q2L               
-        # 43     2E+05   # M_q3L               
-        # 44     2E+05   # M_uR                
-        # 45     2E+05   # M_cR                
-        # 46     2E+05   # M_tR                
-        # 47     2E+05   # M_dR                
-        # 48     2E+05   # M_sR                
-        # 49     2E+05   # M_bR               
+#         0     -1   # EWSB_scale          
+#         1     3E+02   # M_1                 
+#         2     5E+02   # M_2                 
+#         3     1.5E+03   # M_3                 
+#        11     1E+03   # A_t                 
+#        12     1E+02   # A_b                 
+#        13     1E+02   # A_tau               
+#        14     1E+02   # A_u                 
+#        15     1E+02   # A_d                 
+#        16     1E+02   # A_e                 
+#        23     2E+05   # mu(EWSB)            
+#        26     2E+05   # MA_pole                  
+#        25     5.00000000E+00   # tanbeta(MZ)         
+#        31     2E+05   # M_eL                
+#        32     2E+05   # M_muL               
+#        33     2E+05   # M_tauL              
+#        34     2E+05   # M_eR                
+#        35     2E+05   # M_muR               
+#        36     2E+05   # M_tauR              
+#        41     2E+05   # M_q1L               
+#        42     2E+05   # M_q2L               
+#        43     2E+05   # M_q3L               
+#        44     2E+05   # M_uR                
+#        45     2E+05   # M_cR                
+#        46     2E+05   # M_tR                
+#        47     2E+05   # M_dR                
+#        48     2E+05   # M_sR                
+#        49     2E+05   # M_bR               
 	
