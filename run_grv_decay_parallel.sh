@@ -6,7 +6,7 @@ mail=$2
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=1 # 0:serial submittion 1:parallel submission
+submit_mode=0 # 0:serial submittion 1:parallel submission
 job_system=bsub
 que=l
 
@@ -15,7 +15,7 @@ max=1000000
 #max=10000
 #chi0mass=227
 chi0mass=120 # model case1 
-ndiv=40
+ndiv=1
 #ndiv=3
 logflag=1
 

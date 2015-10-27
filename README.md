@@ -7,9 +7,7 @@
   make
   modify susyhit.in
   modify suspect2_lha.in (or slhaspectrum.in when you do not use SUSPECT)
-  ./run
-
-  run.sh (SPheno-SDECAY-HDECAY)
+  ./run (Suspect-SDECAY-HDECAY or SDECAY-HDECAY)
   ./run.sh (SOFTSUSY-SDECAY-HDECAY)
 
 <Using SPheno>
