@@ -1,6 +1,6 @@
 *HOW TO USE this package
 
-1.prepare param_card_temp.dat:
+1.preparation of param_card_temp.dat:
 
 <Using SUSYHIT>
   cd susyhit
