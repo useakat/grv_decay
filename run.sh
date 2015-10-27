@@ -9,4 +9,4 @@
 #./run_grv_decay_parallel.sh HSUSY 1
 # ./run_grv_decay_parallel.sh case1.120.100k_noSLHAdecay 1
 # ./run_grv_decay_parallel.sh case1.120.100k 1
- ./run_grv_decay_parallel.sh test3 1
+# ./run_grv_decay_parallel.sh test3 0
