@@ -1,5 +1,9 @@
 *HOW TO USE this package
 
+0. Prerequisites
+   SPheno (optional)
+   slhaplot (optional)
+
 1.preparation of param_card_temp.dat:
 
 <Using SUSYHIT>

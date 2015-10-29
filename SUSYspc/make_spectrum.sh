@@ -1,4 +1,4 @@
 #!/bin/bash
 
 SPheno LesHouches.in
-slhaplot SPheno.spc
+#slhaplot SPheno.spc
