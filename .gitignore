@@ -1,3 +1,11 @@
 *~
 grv_decay/
 *.o
+pythia/decayLHE
+pythia/decayLHE_Evis
+pythia/decayLHE_nops
+pythia/ee_Nch
+pythia/hadron_dist
+pythia/pp_Nch
+par_*
+result_*

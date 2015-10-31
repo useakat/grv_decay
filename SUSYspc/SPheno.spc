@@ -2,7 +2,7 @@
 # SPheno v3.3.7  
 # W. Porod, Comput. Phys. Commun. 153 (2003) 275-315, hep-ph/0301101
 # in case of problems send email to porod@physik.uni-wuerzburg.de
-# Created: 29.10.2015,  15:17
+# Created: 01.11.2015,  04:35
 Block SPINFO         # Program information
      1   SPheno      # spectrum calculator
      2   v3.3.7      # version number

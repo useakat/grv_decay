@@ -19,8 +19,10 @@ sed -e "s/NNEVENTS/$nevents/" Cards/run_card_temp.dat > Cards/run_card.dat
 #    sed -e "s/MMGRV/$mass/" Cards/param_card_HSUSY.dat > Cards/param_card.dat
 #    sed -e "s/MMGRV/$mass/" Cards/param_card_Hsfermion_noHdecay.dat > Cards/param_card.dat
 #    sed -e "s/MMGRV/$mass/" Cards/param_card_Hsfermion.dat > Cards/param_card.dat
-sed -e "s/MMGRV/$mass/" Cards/param_card_case1.dat > Cards/param_card.dat
+#sed -e "s/MMGRV/$mass/" Cards/param_card_case1.dat > Cards/param_card.dat
 #    sed -e "s/MMGRV/$mass/" Cards/param_card_splitsusy.dat > Cards/param_card.dat
+param_ext=temp
+sed -e "s/MMGRV/$mass/" Cards/param_card_$param_ext.dat > Cards/param_card.dat
 cd ..
 
 nopsflag=0
