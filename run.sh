@@ -5,6 +5,7 @@ cd SUSYspc
 cd ..
 
 param_ext=temp
+cp -rf grv_decay_def grv_decay
 cp -rf SUSYspc/SPheno.spc grv_decay/Cards/param_card_$param_ext.dat
 
 #./run_grv_decay_parallel.sh HSUSY 1
