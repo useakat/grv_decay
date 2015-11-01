@@ -18,6 +18,9 @@ mg5dir=$7
 njob=bjob
 
 dir=par_$i
+if [ $job_system == "icrr" ];then
+    cd /disk/th/work/takaesu
+fi
 mkdir $dir
 cd $dir
 
@@ -31,32 +34,36 @@ if [ $job_system == "icrr" ];then
 #    echo '#PJM -L "rscgrp=th"' >> $njob$i
     echo '#PJM -L "vnode=1"' >> $njob$i
     echo '#PJM -L "vnode-core=1"' >> $njob$i
-#    echo '#PJM -L "elapse=00:30:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
-    echo "" >> $njob$i
+#    echo '#PJM -L "vnode-mem=3Gi"' >> $njob$i
+    echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
 fi
 echo '#------- Program execution -------#' >> $njob$i
 echo "date >allprocess.log" >> $njob$i
-echo "rm -rf $selfdir/$dir/wait.${njob}$i" >> $njob$i
-echo "touch $selfdir/$dir/run.${njob}$i" >> $njob$i
-echo "cp -rf ../makedir.sh ." >> $njob$i
-echo "cp -rf ../$mg5dir ." >> $njob$i
-echo "cp -rf ../pythia ." >> $njob$i
-echo "cp -rf ../run_grv_decay.sh ." >> $njob$i
-echo "./makedir.sh $selfdir/$dir/data 0" >> $njob$i
+echo "rm -rf wait.${njob}$i" >> $njob$i
+echo "touch run.${njob}$i" >> $njob$i
+echo "cp -rf $selfdir/makedir.sh ." >> $njob$i
+echo "cp -rf $selfdir/$mg5dir ." >> $njob$i
+echo "cp -rf $selfdir/pythia ." >> $njob$i
+echo "cp -rf $selfdir/run_grv_decay.sh ." >> $njob$i
+echo "./makedir.sh data 0" >> $njob$i
 echo "$command >>allprocess.log 2>&1" >> $njob$i
-echo "rm -rf $selfdir/$dir/run.${njob}$i" >> $njob$i
-echo "touch $selfdir/$dir/done.${njob}$i" >> $njob$i
+echo "rm -rf run.${njob}$i" >> $njob$i
+echo "touch done.${njob}$i" >> $njob$i
 echo "cp -rf $mg5dir/Cards/param_card.dat ." >> $njob$i
 echo "cp -rf $mg5dir/Cards/run_card.dat ." >> $njob$i
-#echo "rm -rf $mg5dir" >> $njob$i
-#echo "rm -rf pythia" >> $njob$i
+echo "rm -rf $mg5dir" >> $njob$i
+echo "rm -rf pythia" >> $njob$i
+if [ $job_system == "icrr" ];then
+    echo "cd .." >> $njob$i
+    echo "mv $dir $selfdir/." >> $njob$i
+    echo "rm -rf $dir" >> $njob$i
+fi
 
 chmod +x $njob$i
 touch wait.$njob$i
 
 if [ $submit_mode -eq 0 ];then
     echo "job$i launched"
-#    ./$njob$i 1>/dev/null
     ./$njob$i
     echo "job$i finished"
     echo
@@ -69,5 +76,3 @@ else
     fi
     echo ""
 fi
-
-cd ..
