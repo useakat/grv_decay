@@ -119,9 +119,3 @@ echo `date`
 
 rm -rf par_*
 
-if [ $mail -eq 1 ];then
-    if [ job_system == "kekcc" ];then
-	bsub -q e -J cbscan -u takaesu@post.kek.jp nulljob.sh >/dev/null 2>&1
-    elif [ job_system == "icrr" ];then
-	pjsub -m e --mail-list useakat@gmail.com -N ${jobname}_finish nulljob.sh >/dev/null 2>&1
-fi
