@@ -31,6 +31,7 @@ if [ $job_system == "icrr" ];then
 #    echo '#PJM -L "rscgrp=th"' >> $njob$i
     echo '#PJM -L "vnode=1"' >> $njob$i
     echo '#PJM -L "vnode-core=1"' >> $njob$i
+#    echo '#PJM -L "vnode-mem=3Gi"' >> $njob$i
     echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
 fi
 echo '#------- Program execution -------#' >> $njob$i
@@ -55,7 +56,6 @@ touch wait.$njob$i
 
 if [ $submit_mode -eq 0 ];then
     echo "job$i launched"
-#    ./$njob$i 1>/dev/null
     ./$njob$i
     echo "job$i finished"
     echo
