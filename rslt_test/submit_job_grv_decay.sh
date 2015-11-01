@@ -25,14 +25,14 @@ echo "#!/bin/bash" > $njob$i
 echo "" >> $njob$i
 if [ $job_system == "icrr" ];then
     echo '#------ pjsub option --------#' >> $njob$i
-#    echo '#PJM -L "rscunit=common"' >> $njob$i
-    echo '#PJM -L "rscunit=group"' >> $njob$i
-#    echo '#PJM -L ”rscgrp=A”' >> $njob$i
-    echo '#PJM -L "rscgrp=th"' >> $njob$i
+    echo '#PJM -L "rscunit=common"' >> $njob$i
+    echo '#PJM -L "rscgrp=A"' >> $njob$i
+#    echo '#PJM -L "rscunit=group"' >> $njob$i
+#    echo '#PJM -L "rscgrp=th"' >> $njob$i
     echo '#PJM -L "vnode=1"' >> $njob$i
     echo '#PJM -L "vnode-core=1"' >> $njob$i
-    echo '#PJM -L "elapse=00:30:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
-    echo "" >> $njob$i
+#    echo '#PJM -L "vnode-mem=3Gi"' >> $njob$i
+    echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
 fi
 echo '#------- Program execution -------#' >> $njob$i
 echo "date >allprocess.log" >> $njob$i
@@ -56,7 +56,6 @@ touch wait.$njob$i
 
 if [ $submit_mode -eq 0 ];then
     echo "job$i launched"
-#    ./$njob$i 1>/dev/null
     ./$njob$i
     echo "job$i finished"
     echo

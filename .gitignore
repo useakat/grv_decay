@@ -10,3 +10,4 @@ pythia/pp_Nch
 par_*
 result_*
 rslt_*
+*_finish.o*

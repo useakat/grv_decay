@@ -15,7 +15,7 @@ min=100
 max=1000
 #chi0mass=227
 chi0mass=120 # model case1 
-ndiv=1
+ndiv=2
 #ndiv=3
 logflag=1
 
@@ -119,3 +119,4 @@ echo `date`
 
 rm -rf par_*
 
+./mail_notify $mail $job_system $jobname

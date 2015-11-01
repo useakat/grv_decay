@@ -50,6 +50,7 @@ while [ $i -le $imax ];do
 #	nevents=50000
 	nevents=1000
     fi
+#    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     i=`expr $i + 1`
 done
@@ -57,17 +58,17 @@ n=$i
 
 if [ $submit_mode -eq 1 ];then
     ./monitor
-    i=$imin
-    while [ $i -lt $n ];do
-    	cd par_$i
-    	if [ -e done.bjob$i ];then
-    	    a=3
-    	else
-    	    ./bjob$i
-    	fi
-    	cd ..
-    	i=`expr $i + 1`
-    done
+    # i=$imin
+    # while [ $i -lt $n ];do
+    # 	cd par_$i
+    # 	if [ -e done.bjob$i ];then
+    # 	    a=3
+    # 	else
+    # 	    ./bjob$i
+    # 	fi
+    # 	cd ..
+    # 	i=`expr $i + 1`
+    # done
 fi
 
 rsltdir=rslt_$run
@@ -118,6 +119,4 @@ echo `date`
 
 rm -rf par_*
 
-if [ $mail -eq 1 ];then
-    bsub -q e -J cbscan -u takaesu@post.kek.jp nulljob.sh >/dev/null 2>&1
-fi
+./mail_notify $mail $job_system $jobname
