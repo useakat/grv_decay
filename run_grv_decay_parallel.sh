@@ -129,6 +129,6 @@ echo "finished!"
 echo $start
 echo `date`
 
-#rm -rf par_*
+rm -rf par_*
 
 ./mail_notify $mail $job_system $jobname
