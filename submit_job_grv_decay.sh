@@ -23,11 +23,17 @@ cd $dir
 
 echo "#!/bin/bash" > $njob$i
 echo "" >> $njob$i
-if [ job_system == "icrr" ];then
-    echo '#PJM -L "vnode=1"' >> $njob$i
+if [ $job_system == "icrr" ];then
+    echo '#------ pjsub option --------#' >> $njob$i
     echo '#PJM -L "rscunit=common"' >> $njob$i
-    echo "" >> $njob$i
+    echo '#PJM -L "rscgrp=A"' >> $njob$i
+#    echo '#PJM -L "rscunit=group"' >> $njob$i
+#    echo '#PJM -L "rscgrp=th"' >> $njob$i
+    echo '#PJM -L "vnode=1"' >> $njob$i
+    echo '#PJM -L "vnode-core=1"' >> $njob$i
+    echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
 fi
+echo '#------- Program execution -------#' >> $njob$i
 echo "date >allprocess.log" >> $njob$i
 echo "rm -rf $selfdir/$dir/wait.${njob}$i" >> $njob$i
 echo "touch $selfdir/$dir/run.${njob}$i" >> $njob$i
@@ -54,11 +60,11 @@ if [ $submit_mode -eq 0 ];then
     echo "job$i finished"
     echo
 else
-    if [ job_system == "kekcc" ];then
+    if [ $job_system == "kekcc" ];then
 #    bsub -q $que -J $jobname ./$njob$i 1>/dev/null
 	bsub -q $que -J $jobname ./$njob$i
-    elif [ job_system == "icrr" ];then
-	pjsub $njob$i 1>/dev/null
+    elif [ $job_system == "icrr" ];then
+	pjsub -N $jobname -j $njob$i
     fi
     echo ""
 fi

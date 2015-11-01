@@ -5,7 +5,7 @@ mail=$2
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=0 # 0:serial submittion 1:parallel submission
+submit_mode=1      # 0:serial submittion 1:parallel submission
 #job_system=kekcc  # name of computer cluster: kekcc/icrr
 job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
@@ -50,6 +50,7 @@ while [ $i -le $imax ];do
 #	nevents=50000
 	nevents=1000
     fi
+#    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     i=`expr $i + 1`
 done
@@ -57,17 +58,17 @@ n=$i
 
 if [ $submit_mode -eq 1 ];then
     ./monitor
-    i=$imin
-    while [ $i -lt $n ];do
-    	cd par_$i
-    	if [ -e done.bjob$i ];then
-    	    a=3
-    	else
-    	    ./bjob$i
-    	fi
-    	cd ..
-    	i=`expr $i + 1`
-    done
+    # i=$imin
+    # while [ $i -lt $n ];do
+    # 	cd par_$i
+    # 	if [ -e done.bjob$i ];then
+    # 	    a=3
+    # 	else
+    # 	    ./bjob$i
+    # 	fi
+    # 	cd ..
+    # 	i=`expr $i + 1`
+    # done
 fi
 
 rsltdir=rslt_$run

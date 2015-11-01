@@ -5,7 +5,7 @@ mail=$2
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=0 # 0:serial submittion 1:parallel submission
+submit_mode=1      # 0:serial submittion 1:parallel submission
 #job_system=kekcc  # name of computer cluster: kekcc/icrr
 job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
