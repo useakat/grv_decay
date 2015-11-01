@@ -12,10 +12,10 @@ que=l
 
 min=100
 #max=1000000
-max=1000
+max=10000
 #chi0mass=227
 chi0mass=120 # model case1 
-ndiv=1
+ndiv=30
 #ndiv=3
 logflag=1
 
@@ -25,6 +25,14 @@ imax=`expr $ndiv + 1`
 #imin=2
 #imax=3
 mg5dir=grv_decay
+
+# working space for jobs on a remote server
+if [ $job_system == "icrr" ];then
+    work_dir=/disk/th/work/takaesu/$run
+    mkdir $work_dir
+elif [ $job_system == "kekcc" ];then
+    work_dir=./
+fi
 ######################################################
 start=`date`
 echo $start
@@ -51,13 +59,13 @@ while [ $i -le $imax ];do
 	nevents=1000
     fi
 #    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
-    ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
+    ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass" $submit_mode $mg5dir $work_dir
     i=`expr $i + 1`
 done
 n=$i
 
 if [ $submit_mode -eq 1 ];then
-    ./monitor
+    ./monitor $work_dir
     # i=$imin
     # while [ $i -lt $n ];do
     # 	cd par_$i
@@ -69,6 +77,10 @@ if [ $submit_mode -eq 1 ];then
     # 	cd ..
     # 	i=`expr $i + 1`
     # done
+fi
+if [ $job_system == "icrr" ];then
+    mv $work_dir/* .
+    rm -rf $work_dir
 fi
 
 rsltdir=rslt_$run

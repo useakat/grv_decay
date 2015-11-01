@@ -15,7 +15,7 @@ min=100
 max=10000
 #chi0mass=227
 chi0mass=120 # model case1 
-ndiv=2
+ndiv=30
 #ndiv=3
 logflag=1
 

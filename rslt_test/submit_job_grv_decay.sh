@@ -14,10 +14,12 @@ jobname=$4
 command="$5"
 submit_mode=$6 # 0:serial 1:parallel
 mg5dir=$7
+work_dir=$8
 
 njob=bjob
 
 dir=par_$i
+cd $work_dir
 mkdir $dir
 cd $dir
 
@@ -36,16 +38,16 @@ if [ $job_system == "icrr" ];then
 fi
 echo '#------- Program execution -------#' >> $njob$i
 echo "date >allprocess.log" >> $njob$i
-echo "rm -rf $selfdir/$dir/wait.${njob}$i" >> $njob$i
-echo "touch $selfdir/$dir/run.${njob}$i" >> $njob$i
-echo "cp -rf ../makedir.sh ." >> $njob$i
-echo "cp -rf ../$mg5dir ." >> $njob$i
-echo "cp -rf ../pythia ." >> $njob$i
-echo "cp -rf ../run_grv_decay.sh ." >> $njob$i
-echo "./makedir.sh $selfdir/$dir/data 0" >> $njob$i
+echo "rm -rf wait.${njob}$i" >> $njob$i
+echo "touch run.${njob}$i" >> $njob$i
+echo "cp -rf $selfdir/makedir.sh ." >> $njob$i
+echo "cp -rf $selfdir/$mg5dir ." >> $njob$i
+echo "cp -rf $selfdir/pythia ." >> $njob$i
+echo "cp -rf $selfdir/run_grv_decay.sh ." >> $njob$i
+echo "./makedir.sh data 0" >> $njob$i
 echo "$command >>allprocess.log 2>&1" >> $njob$i
-echo "rm -rf $selfdir/$dir/run.${njob}$i" >> $njob$i
-echo "touch $selfdir/$dir/done.${njob}$i" >> $njob$i
+echo "rm -rf run.${njob}$i" >> $njob$i
+echo "touch done.${njob}$i" >> $njob$i
 echo "cp -rf $mg5dir/Cards/param_card.dat ." >> $njob$i
 echo "cp -rf $mg5dir/Cards/run_card.dat ." >> $njob$i
 echo "rm -rf $mg5dir" >> $njob$i
@@ -68,5 +70,3 @@ else
     fi
     echo ""
 fi
-
-cd ..
