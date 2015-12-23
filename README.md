@@ -48,7 +48,13 @@
    ensure that there is not many abortion or erros in Pythia run. 
 
 
-2. Modify relevant files
+2. Prepare MG5 directory
+   cp grv_decay_def grv_decay
+   cd grv_decay
+   cp ../susyhit/XXX.slha Card/param_card_temp.dat
+   
+
+3. Modify relevant files
    * run_grv_decay_parallel.sh
       chi0mass: change to the LSP mass
       nevents (L35 & L38)
@@ -56,8 +62,8 @@
       set param_card_XXX.dat appropreately (~L21)
 
 
-3. Run
+4. Run
    ./run.sh
 
 
-4. Notes
+5. Notes
