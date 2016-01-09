@@ -6,7 +6,7 @@ Block MODSEL  # Select model (with the second parameter):
 #            AMSB                                    :  3
 #            Bottom-up RGE for general MSSM input at EWSB scale: -1
 #            (a specific SuSpect option)
-    1    1   #  mSUGRA 
+    1    0   #  mSUGRA 
 #
 Block SU_ALGO  # !Optional SUSPECT v>=2.3* block: algorithm control parameters
 # !IF block absent (or if any parameter undefined), defaut values are taken  
@@ -14,11 +14,12 @@ Block SU_ALGO  # !Optional SUSPECT v>=2.3* block: algorithm control parameters
      3    1   # 1: g_1(gut) = g_2(gut) consistently calculated from input
 #   (other possibility is 0: High scale input =HIGH in block EXTPAR below)
      4    2   # RGE accuracy: 1: moderate, 2: accurate (but slower)  
+     5    0   # Radiative EWSB imposed (1) or not (0)
      6    0   #  1: M_Hu, M_Hd input (default in constrained models)
 #        (other possibility 0: MA_pole, MU(EWSB) input instead)
-     7    2   #  choice for sparticles masses rad. corr. (=/= h):
+     7    0   #  choice for sparticles masses rad. corr. (=/= h):
 #               2 ->all (recommended, defaut); 1->no R.C. in squarks & gauginos.
-     8    1   # 1 (defaut): EWSB scale=(mt_L*mt_R)^(1/2) 
+     8    0   # 1 (defaut): EWSB scale=(mt_L*mt_R)^(1/2) 
 #         (Or = 0: arbitrary EWSB scale: give EWSB in Block EXTPAR below) 
      9    2   # Final spectrum accuracy: 1 -> 1% acc.; 2 -> 0.01 % acc.(defaut)
      10   2   # Higgs boson masses rad. corr. calculation options: 
@@ -34,17 +35,17 @@ Block SMINPUTS   # Standard Model inputs (if any undefined, defaut values taken)
 #     2     1.16639d-5  # G_F
      3      0.1185  # alpha_s(mZ) SM, MSbar
 #     4     91.187   # mZ pole mass 
-     5      4.25    # Mb(mb) SM MSbar
+     5      4.18    # Mb(mb) SM MSbar
      6      173.34      # Mtop(pole)
      7    1.777     # Mtau(pole)
 #
 Block MINPAR  # specific model input parameters
 #   input for SUGRA models (! comment (#) all other (GMSB,AMSB) lines):
-     1    433.    # m0
-     2    970.    # m1%2
-     5    -3020.      # A0
-     3    14.    # tanbeta(MZ)
-     4    1.0   # sign(mu)
+#     1    440.    # m0
+#     2    970.    # m1%2
+#     5   -3020.      # A0
+#     3    14.    # tanbeta(MZ)
+#     4      1.0   # sign(mu)
 #   input for GMSB models (! comment (#) all other (mSUGRA,AMSB) lines):
 #     1    100.d3  # Lambda_susy
 #     2    200.d3  # Lambda_mess
@@ -66,32 +67,31 @@ Block MINPAR  # specific model input parameters
 #     11   1.      # cHd : weight of m0 for Hd 
 #
 Block EXTPAR  # general MSSM input (! IF uncommented, values replace MINPAR ones)
-#         0     -1   # EWSB_scale          
-#         1     3E+02   # M_1                 
-#         2     5E+02   # M_2                 
-#         3     1.5E+03   # M_3                 
-#        11     1E+03   # A_t                 
-#        12     1E+02   # A_b                 
-#        13     1E+02   # A_tau               
-#        14     1E+02   # A_u                 
-#        15     1E+02   # A_d                 
-#        16     1E+02   # A_e                 
-#        23     2E+05   # mu(EWSB)            
-#        26     2E+05   # MA_pole                  
-#        25     5.00000000E+00   # tanbeta(MZ)         
-#        31     2E+05   # M_eL                
-#        32     2E+05   # M_muL               
-#        33     2E+05   # M_tauL              
-#        34     2E+05   # M_eR                
-#        35     2E+05   # M_muR               
-#        36     2E+05   # M_tauR              
-#        41     2E+05   # M_q1L               
-#        42     2E+05   # M_q2L               
-#        43     2E+05   # M_q3L               
-#        44     2E+05   # M_uR                
-#        45     2E+05   # M_cR                
-#        46     2E+05   # M_tR                
-#        47     2E+05   # M_dR                
-#        48     2E+05   # M_sR                
-#        49     2E+05   # M_bR               
-	
+        0     1E+02   # EWSB_scale          
+        1     6.6E+02   # M_1                 
+        2     4.0E+02   # M_2                 
+        3     1.5E+03   # M_3                 
+       11     0E+00   # A_t                 
+       12     0E+00   # A_b                 
+       13     0E+00   # A_tau               
+       14     0E+00   # A_u                 
+       15     0E+00   # A_d                 
+       16     0E+00   # A_e                 
+       23     1.0E+06   # mu(EWSB)            
+       26     1.0E+06   # MA_pole                  
+       25     2.0E+00   # tanbeta(MZ)         
+       31     1E+06   # M_eL                
+       32     1E+06   # M_muL               
+       33     1E+06   # M_tauL              
+       34     1E+06   # M_eR                
+       35     1E+06   # M_muR               
+       36     1E+06   # M_tauR              
+       41     1E+06   # M_q1L               
+       42     1E+06   # M_q2L               
+       43     1E+06   # M_q3L               
+       44     1E+06   # M_uR                
+       45     1E+06   # M_cR                
+       46     1E+06   # M_tR                
+       47     1E+06   # M_dR                
+       48     1E+06   # M_sR                
+       49     1E+06   # M_bR     

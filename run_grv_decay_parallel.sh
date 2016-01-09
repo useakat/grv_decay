@@ -11,19 +11,16 @@ job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
 
 min=100
-#max=1000000
-max=10000
-#chi0mass=227
-chi0mass=416.877 # CMSSM model
-ndiv=30
-#ndiv=3
+max=1000000
+#chi0mass=416.877 # CMSSM model
+#chi0mass=188 # Natural SUSY model
+chi0mass=400 # Light gaugino model
+ndiv=40
 logflag=1
 
 imin=2
-#imax=31
 imax=`expr $ndiv + 1`
-#imin=2
-#imax=3
+#imax=31
 mg5dir=grv_decay
 
 # working space for jobs on a remote server
@@ -51,13 +48,39 @@ while [ $i -le $imax ];do
     else
 	x=$max
     fi
-    if [ $i -le 15 ];then
-#	nevents=250000
-	nevents=1000
+    factor=1
+    if [ $i -le 28 ];then
+	nevents=`expr 8000 \* $factor`
+    elif [ $i -le 29 ];then
+	nevents=`expr 8000 \* $factor`
+    elif [ $i -le 30 ];then
+	nevents=`expr 7050 \* $factor`
+    elif [ $i -le 31 ];then
+	nevents=`expr 5780 \* $factor`
+    elif [ $i -le 32 ];then
+	nevents=`expr 4700 \* $factor`
+    elif [ $i -le 33 ];then
+	nevents=`expr 3960 \* $factor`
+    elif [ $i -le 34 ];then
+	nevents=`expr 3260 \* $factor`
+    elif [ $i -le 35 ];then
+	nevents=`expr 2700 \* $factor`
+    elif [ $i -le 36 ];then
+	nevents=`expr 2200 \* $factor`
+    elif [ $i -le 37 ];then
+	nevents=`expr 1800 \* $factor`
+    elif [ $i -le 38 ];then
+	nevents=`expr 1500 \* $factor`
+    elif [ $i -le 39 ];then
+	nevents=`expr 1200 \* $factor`
+    elif [ $i -le 40 ];then
+	nevents=`expr 1000 \* $factor`
+    elif [ $i -le 41 ];then
+	nevents=`expr 1000 \* $factor`
     else
-#	nevents=50000
-	nevents=1000
+	nevents=0
     fi
+
 #    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass" $submit_mode $mg5dir $work_dir
     i=`expr $i + 1`
@@ -113,6 +136,8 @@ while [ $i -lt $n ];do
 	cat par_$i/data/run_$i/nini.dat >> $rsltdir/nini_$ext.dat
 	cat par_$i/data/run_$i/Evis.dat >> $rsltdir/Evis_$ext.dat
     fi
+    # copy log file 
+    cp -rf par_$i/allprocess.log $rsltdir/allprocess_$i.log
 ###################################################
     i=`expr $i + 1`
 done

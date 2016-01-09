@@ -52,14 +52,12 @@
    cp grv_decay_def grv_decay
    cd grv_decay
    cp ../susyhit/XXX.slha Card/param_card_temp.dat
-   
+     
 
 3. Modify relevant files
    * run_grv_decay_parallel.sh
       chi0mass: change to the LSP mass
       nevents (L35 & L38)
-   * run_grv_decay.sh
-      set param_card_XXX.dat appropreately (~L21)
 
 
 4. Run
