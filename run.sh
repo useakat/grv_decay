@@ -13,6 +13,7 @@ elif [ $mode -eq 1 ];then
 #./run_grv_decay_parallel.sh HSUSY 1
 # ./run_grv_decay_parallel.sh case1.120.100k_noSLHAdecay 1
 # ./run_grv_decay_parallel.sh case1.120.100k 1
-#    ./run_grv_decay_parallel.sh natural 1
-    ./run_grv_decay_parallel.sh amsb 1
+#    ./run_grv_decay_parallel.sh cmssm 1
+    ./run_grv_decay_parallel.sh natural 1
+#    ./run_grv_decay_parallel.sh amsb 1
 fi
