@@ -12,20 +12,24 @@ que=l
 
 min=100
 max=1000000
-#chi0mass=416.877 # CMSSM model
-chi0mass=188 # Natural SUSY model
+chi0mass=416.877 # CMSSM model
+#chi0mass=188 # Natural SUSY model
 #chi0mass=400 # Light gaugino model
 ndiv=40
 logflag=1
 
 imin=2
 imax=`expr $ndiv + 1`
-#imax=31
+#imax=20
 mg5dir=grv_decay
+factor=100  # nevent factor
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
     work_dir=/disk/th/work/takaesu/$run
+    if [ -e $workdir ];then
+	rm -rf $workdir
+    fi
     mkdir $work_dir
 elif [ $job_system == "kekcc" ];then
     work_dir=./
@@ -33,6 +37,8 @@ fi
 ######################################################
 start=`date`
 echo $start
+
+rm -rf par_*
 
 i=$imin
 while [ $i -le $imax ];do
@@ -48,7 +54,7 @@ while [ $i -le $imax ];do
     else
 	x=$max
     fi
-    factor=100
+
     if [ $i -le 28 ];then
 	nevents=`expr 8000 \* $factor` # for CMSSM & Natural SUSY
 #	nevents=`expr 7000 \* $factor` # for AMSB
@@ -159,15 +165,17 @@ done
 ### MODIFY HERE for saving files relatee to this run
 cp -rf par_$imin/param_card.dat $rsltdir/.
 cp -rf par_$imin/run_card.dat $rsltdir/.
-cp -rf par_$imin/run_grv_decay.sh $rsltdir/.
-cp -rf submit_job_grv_decay.sh $rsltdir/.
+cp -rf run.sh $rsltdir/.
 cp -rf run_grv_decay_parallel.sh $rsltdir/.
+cp -rf submit_job_grv_decay.sh $rsltdir/.
+cp -rf par_$imin/run_grv_decay.sh $rsltdir/.
+git log --oneline | head -1 | tail -1 > $rsltdir/program.version
 ###################################################
 
 echo "finished!"
 echo $start
 echo `date`
 
-rm -rf par_*
+#rm -rf par_*
 
 ./mail_notify $mail $job_system $jobname

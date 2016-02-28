@@ -50,12 +50,13 @@ if [ $xx -eq 1 ];then
 #    fi
     done
     cd ..
-    width=${line#*:}
+    width=${line%GeV*Width*}
+    width=${width#*:}
     width=${width%+-*}
     exp=${width#*e}
     rr=${width%e*}
     exp=`expr -25 - $exp` 
-    taur=`echo "scale=5; 6.667/$rr" | bc`
+    taur=`echo "scale=5; 6.58212/$rr" | bc`
     tau=${taur}e$exp
     echo $mass $width $tau > grvinfo.dat
 else

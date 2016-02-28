@@ -1,0 +1,20 @@
+1590e0b tOK version with only 2-body decays
+99fe5f6 run_grv_decay_parallel.sh: nevents modified
+78a3a9d README.md modified
+b2c2e73 working version on icrr cluster
+05094e1 working on ICRR cluster
+3f26ba6 change to work on working dir
+c44e7bb nc
+20c92f0 run_grv_decay_parallel.sh: mail_notify implemented
+f7d62e0 mail_notify added
+cd6cdb6 nulljob.sh added
+0987c3c monitor: replaced with the default monitor script
+0b795e9 submit_job_grv_decay.sh modified for icrr cluster
+2a7171d grv_decay_def: Card/run_card_temp.dat added
+0286e76 grv_decay_def/Events directory added
+cda4f1a Merge branch 'develop' of https://github.com/useakat/grv_decay into develop
+1bdb74a Card/run_card.dat in grv_decay_def is modified
+51e2088 Card/run_card.dat in grv_decay_def is modified
+e803233 susyhit_slha.out in susyhit debugged
+d6c7cf2 removed unnecessary files
+177affb initialized

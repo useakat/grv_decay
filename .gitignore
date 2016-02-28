@@ -12,3 +12,6 @@ result_*
 rslt_*
 *_finish.o*
 grvinfo.dat
+grv_decay_finish*
+py.py
+nohup

@@ -1,0 +1,135 @@
+Thu Feb 25 22:48:10 JST 2016
+job20 launched
+job20 finished
+
+finished!
+Thu Feb 25 22:48:10 JST 2016
+Thu Feb 25 23:04:06 JST 2016
+Thu Feb 25 23:44:33 JST 2016
+job2 launched
+job2 finished
+
+job3 launched
+job3 finished
+
+job4 launched
+job4 finished
+
+job5 launched
+job5 finished
+
+job6 launched
+job6 finished
+
+job7 launched
+job7 finished
+
+job8 launched
+job8 finished
+
+job9 launched
+job9 finished
+
+job10 launched
+job10 finished
+
+job11 launched
+job11 finished
+
+job12 launched
+job12 finished
+
+job13 launched
+job13 finished
+
+job14 launched
+job14 finished
+
+job15 launched
+job15 finished
+
+job16 launched
+job16 finished
+
+job17 launched
+job17 finished
+
+job18 launched
+job18 finished
+
+job19 launched
+job19 finished
+
+job20 launched
+job20 finished
+
+job21 launched
+job21 finished
+
+job22 launched
+job22 finished
+
+job23 launched
+job23 finished
+
+job24 launched
+job24 finished
+
+job25 launched
+job25 finished
+
+job26 launched
+job26 finished
+
+job27 launched
+job27 finished
+
+job28 launched
+job28 finished
+
+job29 launched
+job29 finished
+
+job30 launched
+job30 finished
+
+job31 launched
+job31 finished
+
+job32 launched
+job32 finished
+
+job33 launched
+job33 finished
+
+job34 launched
+job34 finished
+
+job35 launched
+job35 finished
+
+job36 launched
+job36 finished
+
+job37 launched
+touch: cannot touch `done.bjob37': No such file or directory
+cp: cannot stat `grv_decay/Cards/param_card.dat': No such file or directory
+cp: cannot stat `grv_decay/Cards/run_card.dat': No such file or directory
+./bjob37: line 25: allprocess.log: No such file or directory
+./bjob37: line 26: allprocess.log: No such file or directory
+job37 finished
+
+mkdir: cannot create directory `par_38': File exists
+job38 launched
+cp: cannot stat `grv_decay/Cards/param_card.dat': No such file or directory
+cp: cannot stat `grv_decay/Cards/run_card.dat': No such file or directory
+job38 finished
+
+mkdir: cannot create directory `par_39': File exists
+job39 launched
+cp: cannot stat `grv_decay/Cards/param_card.dat': No such file or directory
+cp: cannot stat `grv_decay/Cards/run_card.dat': No such file or directory
+job39 finished
+
+mkdir: cannot create directory `par_40': File exists
+job40 launched
