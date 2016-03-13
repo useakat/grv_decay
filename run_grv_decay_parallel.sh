@@ -5,7 +5,7 @@ mail=$2
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=1      # 0:serial submittion 1:parallel submission
+submit_mode=0      # 0:serial submittion 1:parallel submission
 #job_system=kekcc  # name of computer cluster: kekcc/icrr
 job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
@@ -18,11 +18,12 @@ chi0mass=416.877 # CMSSM model
 ndiv=40
 logflag=1
 
-imin=2
-imax=`expr $ndiv + 1`
-#imax=20
+#imin=1
+#imax=`expr $ndiv + 1`
+imin=40
+imax=40
 mg5dir=grv_decay
-factor=100  # nevent factor
+factor=10  # nevent factor
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
@@ -40,6 +41,7 @@ echo $start
 
 rm -rf par_*
 
+flag_start=0
 i=$imin
 while [ $i -le $imax ];do
     job=${jobname}_$i
@@ -101,6 +103,14 @@ while [ $i -le $imax ];do
 	nevents=0
     fi
 
+    if [ $flag_start -eq 0 ];then
+	xx=`echo "scale=5; if( $x > $chi0mass ) 1 else 0" | bc`
+	if [ $xx -eq 1 ];then
+	    istart=$i
+	    flag_start=1
+	fi
+    fi
+
 #    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass" $submit_mode $mg5dir $work_dir
     i=`expr $i + 1`
@@ -139,7 +149,8 @@ ext=gravitino
 echo "1, 141, 300, 0, 30, 1" >> $rsltdir/$output
 echo "%%%%%" >> $rsltdir/$output
 x=$min
-i=$imin
+#i=$imin
+i=$istart
 while [ $i -lt $n ];do
 ### MODIFY HERE for preparing result files ###############
     grvinfo=`cat par_$i/grvinfo.dat`
@@ -158,10 +169,15 @@ while [ $i -lt $n ];do
     fi
     # copy log file 
     cp -rf par_$i/allprocess.log $rsltdir/allprocess_$i.log
-###################################################
     i=`expr $i + 1`
 done
 
+### make plots
+mkdir $rsltdir/plots
+cp -rf Edist.gnu $rsltdir/.
+cd $rsltdir
+gnuplot Edist.gnu
+##########################################################################
 ### MODIFY HERE for saving files relatee to this run
 cp -rf par_$imin/param_card.dat $rsltdir/.
 cp -rf par_$imin/run_card.dat $rsltdir/.

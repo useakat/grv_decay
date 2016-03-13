@@ -1,10 +1,4 @@
-####################### Parameters #######################################
-Mmin = 1       # bbbar
-Mmax = 1000000
-ndiv = 40      # bbbar
-ioffset = 7    # bbbar
-##########################################################################
-if (exist("ii")==0 || ii<0) ii = ioffset +1
+if (exist("ii")==0 || ii<0) ii=1
 ###################### Options ###########################################
 set logscale x
 set logscale y
@@ -16,28 +10,40 @@ set format y '10^{%L}'
 #set tics scale 2
 #set key at 1.0E3,1.0E7 samplen 2
 #set xrange [1:7]
-#set yrange [1E-5:2E8]
+#set yrange [1E-7:2E8]
 ####################### Definitions ######################################
-file1 = 'np_sptrm_gravitino.dat'
+mode = 'tautau'
+mass = 1000000 # DM mass in GeV
+#file1 = 'results/rslt_bbbar_check_1k/np_sptrm_bbbar_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_10k/np_sptrm_'.mode.'_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_100k/np_sptrm_'.mode.'_'.mass.'.dat'
+file1 = 'results/rslt_'.mode.'_10m/np_sptrm_'.mode.'_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_100m/np_sptrm_'.mode.'_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_800m/np_sptrm_'.mode.'_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_1g/np_sptrm_'.mode.'_'.mass.'.dat'
+#file1 = 'results/rslt_'.mode.'_test/np_sptrm_'.mode.'_'.mass.'.dat'
 c1 = 'red'
 c2 = 'blue'
 c3 = '#006400' # dark green
 c4 = 'purple'
 c5 = '#ff33ff'
 c6 = '#cc6600' # dark orange
+####################### Parameters #######################################
+ndiv = 1
+Mmin = 1  # for qq~ modes
+#Mmin = 1  # for qq~ modes
+Mmax = 1000000
 ##########################################################################
 set terminal postscript eps enhanced 'Times-Roman' color 20
 set grid
 set key spacing 1.5 samplen 2
 #set multiplot
 
-set output 'plots/Edist_'.ii.'.eps'
-mass = int(exp((log10(Mmin) +(log10(Mmax) -log10(Mmin))/ndiv*(ii-1))*log(10)))
-iii = ii -ioffset
-start = 1 +802*(iii-1) 
+set output 'plots/Edist_'.mass.'.eps' 
+start = 1 +802*(ii-1) 
 end = start +800
 set xrange [1E-2:1000000]
-set yrange [1E-5:1]
+set yrange [1E-8:1]
 #set yrange [0:10]
 #set title '{/=28 Edist}'
 set label 'mDM = '.mass.' GeV' at graph 0.05, graph 0.92
@@ -59,8 +65,9 @@ file1 every ::start::end u 2:11 title "anti-proton" w l lt 2 lw 3 lc rgb c3
 #set nomultiplot
 unset label
 
-if (ii < ndiv+1) pause 0.1; ii=ii+1; \
+if (ii<ndiv) pause 0.1; ii=ii+1; \
 reread
 ii=-1
 
 reset
+
