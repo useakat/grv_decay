@@ -5,7 +5,7 @@ mail=$2
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=0      # 0:serial submittion 1:parallel submission
+submit_mode=1      # 0:serial submittion 1:parallel submission
 #job_system=kekcc  # name of computer cluster: kekcc/icrr
 job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
@@ -18,12 +18,12 @@ chi0mass=416.877 # CMSSM model
 ndiv=40
 logflag=1
 
-#imin=1
-#imax=`expr $ndiv + 1`
-imin=40
-imax=40
+imin=1
+imax=`expr $ndiv + 1`
+#imin=40
+#imax=40
 mg5dir=grv_decay
-factor=10  # nevent factor
+factor=100  # nevent factor
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
@@ -97,7 +97,7 @@ while [ $i -le $imax ];do
 	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
 #	nevents=`expr 680 \* $factor` # for AMSB
     elif [ $i -le 41 ];then
-	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 800 \* $factor` # for CMSSM & Natural SUSY
 #	nevents=`expr 550 \* $factor` # for AMSB
     else
 	nevents=0
@@ -175,8 +175,6 @@ done
 ### make plots
 mkdir $rsltdir/plots
 cp -rf Edist.gnu $rsltdir/.
-cd $rsltdir
-gnuplot Edist.gnu
 ##########################################################################
 ### MODIFY HERE for saving files relatee to this run
 cp -rf par_$imin/param_card.dat $rsltdir/.
@@ -187,6 +185,9 @@ cp -rf submit_job_grv_decay.sh $rsltdir/.
 cp -rf par_$imin/run_grv_decay.sh $rsltdir/.
 git log --oneline | head -1 | tail -1 > $rsltdir/program.version
 ###################################################
+cd $rsltdir
+gnuplot Edist.gnu
+cd ..
 
 echo "finished!"
 echo $start

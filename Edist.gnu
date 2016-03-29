@@ -1,8 +1,8 @@
 ####################### Parameters #######################################
-Mmin = 1       # bbbar
+Mmin = 100
 Mmax = 1000000
-ndiv = 40      # bbbar
-ioffset = 7    # bbbar
+ndiv = 40 
+ioffset = 7
 ##########################################################################
 if (exist("ii")==0 || ii<0) ii = ioffset +1
 ###################### Options ###########################################
@@ -34,7 +34,7 @@ set key spacing 1.5 samplen 2
 set output 'plots/Edist_'.ii.'.eps'
 mass = int(exp((log10(Mmin) +(log10(Mmax) -log10(Mmin))/ndiv*(ii-1))*log(10)))
 iii = ii -ioffset
-start = 1 +802*(iii-1) 
+start = 1 +801*(iii-1) 
 end = start +800
 set xrange [1E-2:1000000]
 set yrange [1E-5:1]
