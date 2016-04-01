@@ -13,7 +13,8 @@
     rm -rf grv_decay
 
 #    cp -rf grv_decay_def grv_decay
-    cp -rf grv_decay_2body_test grv_decay
+#    cp -rf grv_decay_2body_test grv_decay
+    cp -rf grv_2body+n1ff grv_decay
 
     cp ./susyhit/param_card_temp.dat.cmssm ./grv_decay/Cards/param_card_temp.dat
 
@@ -34,5 +35,7 @@
 #    ./run_grv_decay_parallel.sh cmssm_test_factor100 1
 #    ./run_grv_decay_parallel.sh cmssm_2body_factor10_test 1
 #    ./run_grv_decay_parallel.sh cmssm_2body_factor100_test 1
-    ./run_grv_decay_parallel.sh cmssm_2body_factor100_2 1
+#    ./run_grv_decay_parallel.sh cmssm_2body_factor100_2 1
+#    ./run_grv_decay_parallel.sh cmssm_factor100 1
+    ./run_grv_decay_parallel.sh cmssm_2body+n1ff factor1 1
 #fi

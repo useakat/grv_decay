@@ -1,0 +1,4 @@
+      PMASS(1)=ABS(MDL_MGRV)
+      PMASS(2)=ABS(MDL_MNEU1)
+      PMASS(3)=ZERO
+      PMASS(4)=ZERO

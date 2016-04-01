@@ -23,7 +23,7 @@ imax=`expr $ndiv + 1`
 #imin=40
 #imax=40
 mg5dir=grv_decay
-factor=100  # nevent factor
+factor=1  # nevent factor
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
@@ -97,7 +97,7 @@ while [ $i -le $imax ];do
 	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
 #	nevents=`expr 680 \* $factor` # for AMSB
     elif [ $i -le 41 ];then
-	nevents=`expr 800 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 900 \* $factor` # for CMSSM & Natural SUSY
 #	nevents=`expr 550 \* $factor` # for AMSB
     else
 	nevents=0
