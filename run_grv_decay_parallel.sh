@@ -18,10 +18,10 @@ chi0mass=416.877 # CMSSM model
 ndiv=40
 logflag=1
 
-imin=1
-imax=`expr $ndiv + 1`
-#imin=40
-#imax=40
+#imin=1
+#imax=`expr $ndiv + 1`
+imin=40
+imax=40
 mg5dir=grv_decay
 factor=1  # nevent factor
 

@@ -37,5 +37,6 @@
 #    ./run_grv_decay_parallel.sh cmssm_2body_factor100_test 1
 #    ./run_grv_decay_parallel.sh cmssm_2body_factor100_2 1
 #    ./run_grv_decay_parallel.sh cmssm_factor100 1
-    ./run_grv_decay_parallel.sh cmssm_2body+n1ff factor1 1
+#    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor100 1
+    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor1_test 1
 #fi
