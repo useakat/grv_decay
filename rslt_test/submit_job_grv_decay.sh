@@ -28,16 +28,17 @@ echo "" >> $njob$i
 if [ $job_system == "icrr" ];then
     echo '#------ pjsub option --------#' >> $njob$i
     echo '#PJM -L "rscunit=common"' >> $njob$i
-    echo '#PJM -L "rscgrp=A"' >> $njob$i
+    echo '#PJM -L "rscgrp=B"' >> $njob$i
 #    echo '#PJM -L "rscunit=group"' >> $njob$i
 #    echo '#PJM -L "rscgrp=th"' >> $njob$i
     echo '#PJM -L "vnode=1"' >> $njob$i
     echo '#PJM -L "vnode-core=1"' >> $njob$i
 #    echo '#PJM -L "vnode-mem=3Gi"' >> $njob$i
-    echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
+#    echo '#PJM -L "elapse=00:15:00"' >> $njob$i # A:<3h B:<24h C:<1week th:no limit
 fi
 echo '#------- Program execution -------#' >> $njob$i
-echo "date >allprocess.log" >> $njob$i
+echo 'start=`date`' >> $njob$i
+echo 'echo $start >allprocess.log' >> $njob$i
 echo "rm -rf wait.${njob}$i" >> $njob$i
 echo "touch run.${njob}$i" >> $njob$i
 echo "cp -rf $selfdir/makedir.sh ." >> $njob$i
@@ -52,6 +53,8 @@ echo "cp -rf $mg5dir/Cards/param_card.dat ." >> $njob$i
 echo "cp -rf $mg5dir/Cards/run_card.dat ." >> $njob$i
 echo "rm -rf $mg5dir" >> $njob$i
 echo "rm -rf pythia" >> $njob$i
+echo 'echo $start >>allprocess.log' >> $njob$i
+echo 'date >>allprocess.log' >> $njob$i
 
 chmod +x $njob$i
 touch wait.$njob$i

@@ -27,7 +27,6 @@ cd ..
 
 nopsflag=0
 xx=`echo "scale=5; if( $mass > $chi0mass ) 1 else 0" | bc`
-#if [ $mass -gt $chi0mass ];then
 if [ $xx -eq 1 ];then
     echo "generating events..."
     cd $mg5dir
@@ -36,8 +35,6 @@ if [ $xx -eq 1 ];then
     i=1
     while [ -z "$line" ];do 
 	echo "event generation $i"
-#    ./bin/generate_events $run_name -f | tee ./mg5.log
-#	touch mg5.log
 	./bin/generate_events $run_name -f > ./mg5.log
 	line=`grep "Width :" mg5.log`
 	rm -rf RunWeb
@@ -50,18 +47,19 @@ if [ $xx -eq 1 ];then
 #    fi
     done
     cd ..
-    width=${line#*:}
+    width=${line%GeV*Width*}
+    width=${width#*:}
     width=${width%+-*}
     exp=${width#*e}
     rr=${width%e*}
     exp=`expr -25 - $exp` 
-    taur=`echo "scale=5; 6.667/$rr" | bc`
+    taur=`echo "scale=5; 6.58212/$rr" | bc`
     tau=${taur}e$exp
     echo $mass $width $tau > grvinfo.dat
 else
     echo "m3/2 is smaller than m_chi0. skip event generation..."
     nopsflag=1
-    echo $mass 0.0 1e99 > grvinfo.dat
+#    echo $mass 0.0 1e99 > grvinfo.dat
 fi
 
 cd pythia
@@ -80,9 +78,9 @@ if [ $nopsflag -eq 0 ];then
     ./hadron_dist $mass $nevents "$tau"
 else
     echo "skip pythia ..."
-    echo "0.0" > ./Evis_tot.dat
-    make decayLHE_nops
-    ./decayLHE_nops $mass
+#    echo "0.0" > ./Evis_tot.dat
+#    make decayLHE_nops
+#    ./decayLHE_nops $mass
 fi
 cd ..
 

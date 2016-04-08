@@ -20,23 +20,13 @@
 
 ##### modify chi0mass in run_grv_decay_parallel.sh
 
-#./run_grv_decay_parallel.sh HSUSY 1
-# ./run_grv_decay_parallel.sh case1.120.100k_noSLHAdecay 1
-# ./run_grv_decay_parallel.sh case1.120.100k 1
-#    ./run_grv_decay_parallel.sh cmssm 1
-#    ./run_grv_decay_parallel.sh natural 1
-#    ./run_grv_decay_parallel.sh amsb 1
-#    ./run_grv_decay_parallel.sh cmssm_test 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_test 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_test2 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_test_100k 1
-#    ./run_grv_decay_parallel.sh cmssm_test_100k 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_factor100 1
-#    ./run_grv_decay_parallel.sh cmssm_test_factor100 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_factor10_test 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_factor100_test 1
-#    ./run_grv_decay_parallel.sh cmssm_2body_factor100_2 1
-#    ./run_grv_decay_parallel.sh cmssm_factor100 1
-#    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor100 1
-    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor1_test 1
+#    ./run_grv_decay_parallel.sh cmssm_2body_factor100 100 1
+#    ./run_grv_decay_parallel.sh cmssm_test_factor100 100 1
+#    ./run_grv_decay_parallel.sh cmssm_2body_factor10_test 10 1
+#    ./run_grv_decay_parallel.sh cmssm_2body_factor100_test 100 1
+#    ./run_grv_decay_parallel.sh cmssm_2body_factor100_2 100 1
+#    ./run_grv_decay_parallel.sh cmssm_factor100 100 1
+#    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor100 100 1
+#    ./run_grv_decay_parallel.sh cmssm_2body+n1ff_factor1_test 1 1
+    ./run_grv_decay_parallel.sh test 10 1
 #fi

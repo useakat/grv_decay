@@ -1,7 +1,8 @@
 #!/bin/bash
 
 run=$1
-mail=$2
+factor=$2
+mail=$3
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
@@ -20,10 +21,9 @@ logflag=1
 
 #imin=1
 #imax=`expr $ndiv + 1`
-imin=40
-imax=40
+imin=39
+imax=39
 mg5dir=grv_decay
-factor=1  # nevent factor
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
