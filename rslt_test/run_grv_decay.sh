@@ -76,6 +76,8 @@ if [ $nopsflag -eq 0 ];then
 #    ./decayLHE $nevents
     make hadron_dist
     ./hadron_dist $mass $nevents "$tau"
+    make Evis 
+    ./Evis $mass $nevents "$tau"
 else
     echo "skip pythia ..."
 #    echo "0.0" > ./Evis_tot.dat

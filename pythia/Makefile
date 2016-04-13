@@ -27,6 +27,9 @@ $(PREFIX_LIB)/libpythia8.a :
 hadron_dist : hadron_dist.cc $(PREFIX_LIB)/libpythia8.a
 	$(CXX) $^ -o $@ $(CXX_COMMON)
 
+Evis : Evis.cc $(PREFIX_LIB)/libpythia8.a
+	$(CXX) $^ -o $@ $(CXX_COMMON)
+
 decayLHE : decayLHE.cc $(PREFIX_LIB)/libpythia8.a
 	$(CXX) $^ -o $@ $(CXX_COMMON)
 
