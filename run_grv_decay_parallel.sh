@@ -19,10 +19,10 @@ chi0mass=416.877 # CMSSM model
 ndiv=40
 logflag=1
 
-#imin=1
-#imax=`expr $ndiv + 1`
-imin=39
-imax=39
+imin=1
+imax=`expr $ndiv + 1`
+#imin=8
+#imax=8
 mg5dir=grv_decay
 
 # working space for jobs on a remote server
@@ -158,7 +158,7 @@ while [ $i -lt $n ];do
     echo $grvinfo $Evis_tot >> $rsltdir/$output
     cat par_$i/data/run_$i/Edist.dat >> $rsltdir/$output
     echo "%%%%%" >> $rsltdir/$output
-    if [ $i -eq $imin ];then
+    if [ $i -eq $istart ];then
 	cat par_$i/data/run_$i/np_sptrm.dat > $rsltdir/np_sptrm_$ext.dat
 	cat par_$i/data/run_$i/nini.dat > $rsltdir/nini_$ext.dat
 	cat par_$i/data/run_$i/Evis.dat > $rsltdir/Evis_$ext.dat

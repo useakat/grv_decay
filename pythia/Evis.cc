@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
   // Allow for possibility of a few faulty events.
   // Extract settings to be used in the main program.
   //  int nAbort  = pythia.mode("Main:timesAllowErrors");
-  int nAbort = 10;
+  int nAbort = 10000000;
   int iAbort = 0;
 
   double nevents = 0;

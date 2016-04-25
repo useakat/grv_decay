@@ -56,6 +56,8 @@ int main(int argc, char *argv[]) {
   //pythia.readString("PartonLevel:FSRinProcess = off");
   //  pythia.readString("PartonLevel:Remnants = off");
 
+  pythia.readString("Next:numberShowEvent = 10");
+
 /////////////// LHE input mode ////////////////
   pythia.readString("Beams:frameType = 4");
   pythia.readString("Beams:LHEF = unweighted_events_mod.lhe");
@@ -104,7 +106,7 @@ int main(int argc, char *argv[]) {
   // Allow for possibility of a few faulty events.
   // Extract settings to be used in the main program.
   //  int nAbort  = pythia.mode("Main:timesAllowErrors");
-  int nAbort = 10;
+  int nAbort = 10000000;
   int iAbort = 0;
 
   //  double nevents = 90000.;
