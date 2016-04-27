@@ -173,7 +173,8 @@ while [ $i -lt $n ];do
 done
 
 ### make plots
-mkdir $rsltdir/plots
+#mkdir $rsltdir/plots
+./makedir.sh $rsltdir/plots 1
 cp -rf Edist.gnu $rsltdir/.
 ##########################################################################
 ### MODIFY HERE for saving files relatee to this run
