@@ -14,10 +14,10 @@ que=l
 min=100
 max=1000000
 zmass=91
-#model=cmssm
-model=natural
-#chi0mass=416.877 # CMSSM model
-chi0mass=188 # Natural SUSY model
+model=cmssm
+#model=natural
+chi0mass=416.877 # CMSSM model
+#chi0mass=188 # Natural SUSY model
 #chi0mass=400 # Light gaugino model
 ndiv=40
 logflag=1
@@ -41,9 +41,6 @@ elif [ $job_system == "kekcc" ];then
     work_dir=./
 fi
 
-#rm -rf $mg5dir
-#cp -rf grv_decay_def $mg5dir
-#cp ./susyhit/param_card_temp.dat.$model ./$mg5dir/Cards/param_card_temp.dat
 ######################################################
 start=`date`
 echo $start
@@ -123,8 +120,6 @@ while [ $i -le $imax ];do
     threshold_mass=`echo "scale=5; $chi0mass +$zmass" | bc`
     zz=`echo "scale=5; if( $x < $threshold_mass ) 1 else 0" | bc`
     if [ $zz -eq 1 ];then
-#	rm -rf $mg5dir
-#	cp -rf grv_2body+n1jetjet $mg5dir
 	mg5dir=$mg5dir_3body
     else
 	mg5dir=$mg5dir_2body
@@ -169,7 +164,6 @@ ext=gravitino
 echo "1, 141, 300, 0, 30, 1" >> $rsltdir/$output
 echo "%%%%%" >> $rsltdir/$output
 x=$min
-#i=$imin
 i=$istart
 while [ $i -lt $n ];do
 ### MODIFY HERE for preparing result files ###############
@@ -193,7 +187,6 @@ while [ $i -lt $n ];do
 done
 
 ### make plots
-#mkdir $rsltdir/plots
 ./makedir.sh $rsltdir/plots 1
 ioffset=`expr $istart - 1`
 sed -e "s/OFFSET/$ioffset/" Edist.gnu > Edist.tmp
