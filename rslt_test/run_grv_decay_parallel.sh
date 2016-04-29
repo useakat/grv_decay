@@ -6,13 +6,15 @@ mail=$3
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
-submit_mode=1      # 0:serial submittion 1:parallel submission
+submit_mode=0      # 0:serial submittion 1:parallel submission
 #job_system=kekcc  # name of computer cluster: kekcc/icrr
 job_system=icrr    # name of computer cluster: kekcc/icrr
 que=l
 
 min=100
 max=1000000
+zmass=91
+model=cmssm
 chi0mass=416.877 # CMSSM model
 #chi0mass=188 # Natural SUSY model
 #chi0mass=400 # Light gaugino model
@@ -21,20 +23,25 @@ logflag=1
 
 #imin=1
 #imax=`expr $ndiv + 1`
-imin=39
-imax=39
+imin=8
+imax=8
 mg5dir=grv_decay
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
     work_dir=/disk/th/work/takaesu/$run
-    if [ -e $workdir ];then
-	rm -rf $workdir
+    if [ -e $work_dir ];then
+	echo "$work_dir exists. Delete and remake it"
+	rm -rf $work_dir
     fi
     mkdir $work_dir
 elif [ $job_system == "kekcc" ];then
     work_dir=./
 fi
+
+rm -rf $mg5dir
+cp -rf grv_decay_def $mg5dir
+cp ./susyhit/param_card_temp.dat.$model ./$mg5dir/Cards/param_card_temp.dat
 ######################################################
 start=`date`
 echo $start
@@ -110,6 +117,14 @@ while [ $i -le $imax ];do
 	    flag_start=1
 	fi
     fi
+    
+    threshold_mass=`echo "scale=5; $chi0mass +$zmass" | bc`
+    zz=`echo "scale=5; if( $x < $threshold_mass ) 1 else 0" | bc`
+    if [ $zz -eq 1 ];then
+	rm -rf $mg5dir
+	cp -rf grv_2body+n1jetjet $mg5dir
+	cp ./susyhit/param_card_temp.dat.$model ./$mg5dir/Cards/param_card_temp.dat
+    fi
 
 #    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass" $submit_mode $mg5dir $work_dir
@@ -158,7 +173,7 @@ while [ $i -lt $n ];do
     echo $grvinfo $Evis_tot >> $rsltdir/$output
     cat par_$i/data/run_$i/Edist.dat >> $rsltdir/$output
     echo "%%%%%" >> $rsltdir/$output
-    if [ $i -eq $imin ];then
+    if [ $i -eq $istart ];then
 	cat par_$i/data/run_$i/np_sptrm.dat > $rsltdir/np_sptrm_$ext.dat
 	cat par_$i/data/run_$i/nini.dat > $rsltdir/nini_$ext.dat
 	cat par_$i/data/run_$i/Evis.dat > $rsltdir/Evis_$ext.dat
@@ -173,7 +188,8 @@ while [ $i -lt $n ];do
 done
 
 ### make plots
-mkdir $rsltdir/plots
+#mkdir $rsltdir/plots
+./makedir.sh $rsltdir/plots 1
 cp -rf Edist.gnu $rsltdir/.
 ##########################################################################
 ### MODIFY HERE for saving files relatee to this run
@@ -186,7 +202,7 @@ cp -rf par_$imin/run_grv_decay.sh $rsltdir/.
 git log --oneline | head -1 | tail -1 > $rsltdir/program.version
 ###################################################
 cd $rsltdir
-gnuplot Edist.gnu
+#gnuplot Edist.gnu
 cd ..
 
 echo "finished!"

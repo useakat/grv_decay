@@ -20,6 +20,7 @@ njob=bjob
 
 dir=par_$i
 cd $work_dir
+echo "moved to $work_dir"
 mkdir $dir
 cd $dir
 

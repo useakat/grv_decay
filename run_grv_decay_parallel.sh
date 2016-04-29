@@ -13,28 +13,37 @@ que=l
 
 min=100
 max=1000000
-chi0mass=416.877 # CMSSM model
-#chi0mass=188 # Natural SUSY model
+zmass=91
+#model=cmssm
+model=natural
+#chi0mass=416.877 # CMSSM model
+chi0mass=188 # Natural SUSY model
 #chi0mass=400 # Light gaugino model
 ndiv=40
 logflag=1
 
 imin=1
 imax=`expr $ndiv + 1`
-#imin=8
-#imax=8
-mg5dir=grv_decay
+#imin=4
+#imax=4
+mg5dir_2body=grv_decay_def
+mg5dir_3body=grv_2body+n1jetjet
 
 # working space for jobs on a remote server
 if [ $job_system == "icrr" ];then
     work_dir=/disk/th/work/takaesu/$run
-    if [ -e $workdir ];then
-	rm -rf $workdir
+    if [ -e $work_dir ];then
+	echo "$work_dir exists. Delete and remake it"
+	rm -rf $work_dir
     fi
     mkdir $work_dir
 elif [ $job_system == "kekcc" ];then
     work_dir=./
 fi
+
+#rm -rf $mg5dir
+#cp -rf grv_decay_def $mg5dir
+#cp ./susyhit/param_card_temp.dat.$model ./$mg5dir/Cards/param_card_temp.dat
 ######################################################
 start=`date`
 echo $start
@@ -110,6 +119,17 @@ while [ $i -le $imax ];do
 	    flag_start=1
 	fi
     fi
+    
+    threshold_mass=`echo "scale=5; $chi0mass +$zmass" | bc`
+    zz=`echo "scale=5; if( $x < $threshold_mass ) 1 else 0" | bc`
+    if [ $zz -eq 1 ];then
+#	rm -rf $mg5dir
+#	cp -rf grv_2body+n1jetjet $mg5dir
+	mg5dir=$mg5dir_3body
+    else
+	mg5dir=$mg5dir_2body
+    fi
+    cp ./susyhit/param_card_temp.dat.$model ./$mg5dir/Cards/param_card_temp.dat
 
 #    echo $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass > allprocess.log" $submit_mode $mg5dir
     ./submit_job_grv_decay.sh $job_system $que $i $job "./run_grv_decay.sh run_$i $x $nevents $mg5dir $chi0mass" $submit_mode $mg5dir $work_dir
@@ -175,7 +195,9 @@ done
 ### make plots
 #mkdir $rsltdir/plots
 ./makedir.sh $rsltdir/plots 1
-cp -rf Edist.gnu $rsltdir/.
+ioffset=`expr $istart - 1`
+sed -e "s/OFFSET/$ioffset/" Edist.gnu > Edist.tmp
+mv Edist.tmp $rsltdir/Edist.gnu
 ##########################################################################
 ### MODIFY HERE for saving files relatee to this run
 cp -rf par_$imin/param_card.dat $rsltdir/.
