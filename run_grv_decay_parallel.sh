@@ -15,10 +15,11 @@ min=100
 max=1000000
 zmass=91
 #model=cmssm
-model=natural
+#model=natural
+model=amsb
 #chi0mass=416.877 # CMSSM model
-chi0mass=188 # Natural SUSY model
-#chi0mass=400 # Light gaugino model
+#chi0mass=188 # Natural SUSY model
+chi0mass=400 # Light gaugino model
 ndiv=40
 logflag=1
 
@@ -64,47 +65,47 @@ while [ $i -le $imax ];do
     fi
 
     if [ $i -le 28 ];then
-	nevents=`expr 8000 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 7000 \* $factor` # for AMSB
+#	nevents=`expr 8000 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 7000 \* $factor` # for AMSB
     elif [ $i -le 29 ];then
-	nevents=`expr 7500 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 5600 \* $factor` # for AMSB
+#	nevents=`expr 7500 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 5600 \* $factor` # for AMSB
     elif [ $i -le 30 ];then
-	nevents=`expr 7050 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 4500 \* $factor` # for AMSB
+#	nevents=`expr 7050 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 4500 \* $factor` # for AMSB
     elif [ $i -le 31 ];then
-	nevents=`expr 5780 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 4100 \* $factor` # for AMSB
+#	nevents=`expr 5780 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 4100 \* $factor` # for AMSB
     elif [ $i -le 32 ];then
-	nevents=`expr 4700 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 3400 \* $factor` # for AMSB
+#	nevents=`expr 4700 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 3400 \* $factor` # for AMSB
     elif [ $i -le 33 ];then
-	nevents=`expr 3960 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 2700 \* $factor` # for AMSB
+#	nevents=`expr 3960 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 2700 \* $factor` # for AMSB
     elif [ $i -le 34 ];then
-	nevents=`expr 3260 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 2200 \* $factor` # for AMSB
+#	nevents=`expr 3260 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 2200 \* $factor` # for AMSB
     elif [ $i -le 35 ];then
-	nevents=`expr 2700 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 1800 \* $factor` # for AMSB
+#	nevents=`expr 2700 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 1800 \* $factor` # for AMSB
     elif [ $i -le 36 ];then
-	nevents=`expr 2200 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 1400 \* $factor` # for AMSB
+#	nevents=`expr 2200 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 1400 \* $factor` # for AMSB
     elif [ $i -le 37 ];then
-	nevents=`expr 1800 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 1200 \* $factor` # for AMSB
+#	nevents=`expr 1800 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 1200 \* $factor` # for AMSB
     elif [ $i -le 38 ];then
-	nevents=`expr 1500 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 1000 \* $factor` # for AMSB
+#	nevents=`expr 1500 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 1000 \* $factor` # for AMSB
     elif [ $i -le 39 ];then
-	nevents=`expr 1200 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 840 \* $factor` # for AMSB
+#	nevents=`expr 1200 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 840 \* $factor` # for AMSB
     elif [ $i -le 40 ];then
-	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 680 \* $factor` # for AMSB
+#	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 680 \* $factor` # for AMSB
     elif [ $i -le 41 ];then
-	nevents=`expr 900 \* $factor` # for CMSSM & Natural SUSY
-#	nevents=`expr 550 \* $factor` # for AMSB
+#	nevents=`expr 900 \* $factor` # for CMSSM & Natural SUSY
+	nevents=`expr 550 \* $factor` # for AMSB
     else
 	nevents=0
     fi
