@@ -23,10 +23,10 @@ chi0mass=400 # Light gaugino model
 ndiv=40
 logflag=1
 
-imin=1
-imax=`expr $ndiv + 1`
-#imin=4
-#imax=4
+#imin=1
+#imax=`expr $ndiv + 1`
+imin=21
+imax=41
 mg5dir_2body=grv_decay_def
 mg5dir_3body=grv_2body+n1jetjet
 
