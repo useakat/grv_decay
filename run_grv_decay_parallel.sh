@@ -1,8 +1,9 @@
 #!/bin/bash
 
 run=$1
-factor=$2
-mail=$3
+model=$2 # cmssm/natural/amsb1/amsb2
+factor=$3 # factor for the generated event number
+mail=$4
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
@@ -16,17 +17,24 @@ max=1000000
 zmass=91
 #model=cmssm
 #model=natural
-model=amsb
-#chi0mass=416.877 # CMSSM model
-#chi0mass=188 # Natural SUSY model
-chi0mass=400 # Light gaugino model
+#model=amsb
+if [ $model == "cmssm" ];then # CMSSM model
+    chi0mass=416.877 
+elif [ $model == "natural" ];then # Natural SUSY model
+    chi0mass=188 
+elif [ $model == "amsb1" ];then # Light gaugino model 1 
+    chi0mass=1000 
+elif [ $model == "amsb2" ];then # Light gaugino model 2
+    chi0mass=500 
+fi
 ndiv=40
 logflag=1
 
-#imin=1
-#imax=`expr $ndiv + 1`
-imin=21
-imax=41
+imin=1
+imax=`expr $ndiv + 1`
+#imin=21
+#imax=41
+
 mg5dir_2body=grv_decay_def
 mg5dir_3body=grv_2body+n1jetjet
 
@@ -64,50 +72,70 @@ while [ $i -le $imax ];do
 	x=$max
     fi
 
-    if [ $i -le 28 ];then
-#	nevents=`expr 8000 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 7000 \* $factor` # for AMSB
-    elif [ $i -le 29 ];then
-#	nevents=`expr 7500 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 5600 \* $factor` # for AMSB
-    elif [ $i -le 30 ];then
-#	nevents=`expr 7050 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 4500 \* $factor` # for AMSB
-    elif [ $i -le 31 ];then
-#	nevents=`expr 5780 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 4100 \* $factor` # for AMSB
-    elif [ $i -le 32 ];then
-#	nevents=`expr 4700 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 3400 \* $factor` # for AMSB
-    elif [ $i -le 33 ];then
-#	nevents=`expr 3960 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 2700 \* $factor` # for AMSB
-    elif [ $i -le 34 ];then
-#	nevents=`expr 3260 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 2200 \* $factor` # for AMSB
-    elif [ $i -le 35 ];then
-#	nevents=`expr 2700 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 1800 \* $factor` # for AMSB
-    elif [ $i -le 36 ];then
-#	nevents=`expr 2200 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 1400 \* $factor` # for AMSB
-    elif [ $i -le 37 ];then
-#	nevents=`expr 1800 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 1200 \* $factor` # for AMSB
-    elif [ $i -le 38 ];then
-#	nevents=`expr 1500 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 1000 \* $factor` # for AMSB
-    elif [ $i -le 39 ];then
-#	nevents=`expr 1200 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 840 \* $factor` # for AMSB
-    elif [ $i -le 40 ];then
-#	nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 680 \* $factor` # for AMSB
-    elif [ $i -le 41 ];then
-#	nevents=`expr 900 \* $factor` # for CMSSM & Natural SUSY
-	nevents=`expr 550 \* $factor` # for AMSB
+    if [ $model == "amsb1" -o $model == "amsb2" ];then
+	if [ $i -le 28 ];then
+	    nevents=`expr 7000 \* $factor` # for AMSB
+	elif [ $i -le 29 ];then
+	    nevents=`expr 5600 \* $factor` # for AMSB
+	elif [ $i -le 30 ];then
+	    nevents=`expr 4500 \* $factor` # for AMSB
+	elif [ $i -le 31 ];then
+	    nevents=`expr 4100 \* $factor` # for AMSB
+	elif [ $i -le 32 ];then
+	    nevents=`expr 3400 \* $factor` # for AMSB
+	elif [ $i -le 33 ];then
+	    nevents=`expr 2700 \* $factor` # for AMSB
+	elif [ $i -le 34 ];then
+	    nevents=`expr 2200 \* $factor` # for AMSB
+	elif [ $i -le 35 ];then
+	    nevents=`expr 1800 \* $factor` # for AMSB
+	elif [ $i -le 36 ];then
+	    nevents=`expr 1400 \* $factor` # for AMSB
+	elif [ $i -le 37 ];then
+	    nevents=`expr 1200 \* $factor` # for AMSB
+	elif [ $i -le 38 ];then
+	    nevents=`expr 1000 \* $factor` # for AMSB
+	elif [ $i -le 39 ];then
+	    nevents=`expr 840 \* $factor` # for AMSB
+	elif [ $i -le 40 ];then
+	    nevents=`expr 680 \* $factor` # for AMSB
+	elif [ $i -le 41 ];then
+	    nevents=`expr 550 \* $factor` # for AMSB
+	else
+	    nevents=0
+	fi
     else
-	nevents=0
+	if [ $i -le 28 ];then
+	    nevents=`expr 8000 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 29 ];then
+	    nevents=`expr 7500 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 30 ];then
+	    nevents=`expr 7050 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 31 ];then
+	    nevents=`expr 5780 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 32 ];then
+	    nevents=`expr 4700 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 33 ];then
+	    nevents=`expr 3960 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 34 ];then
+	    nevents=`expr 3260 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 35 ];then
+	    nevents=`expr 2700 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 36 ];then
+	    nevents=`expr 2200 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 37 ];then
+	    nevents=`expr 1800 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 38 ];then
+	    nevents=`expr 1500 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 39 ];then
+	    nevents=`expr 1200 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 40 ];then
+	    nevents=`expr 1000 \* $factor` # for CMSSM & Natural SUSY
+	elif [ $i -le 41 ];then
+	    nevents=`expr 900 \* $factor` # for CMSSM & Natural SUSY
+	else
+	    nevents=0
+	fi
     fi
 
     if [ $flag_start -eq 0 ];then
@@ -135,17 +163,6 @@ n=$i
 
 if [ $submit_mode -eq 1 ];then
     ./monitor $work_dir
-    # i=$imin
-    # while [ $i -lt $n ];do
-    # 	cd par_$i
-    # 	if [ -e done.bjob$i ];then
-    # 	    a=3
-    # 	else
-    # 	    ./bjob$i
-    # 	fi
-    # 	cd ..
-    # 	i=`expr $i + 1`
-    # done
 fi
 if [ $job_system == "icrr" ];then
     mv $work_dir/* .

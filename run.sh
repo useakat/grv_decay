@@ -39,5 +39,6 @@
 #    ./run_grv_decay_parallel.sh natural_2body+3body_factor100 100 1
 #    ./run_grv_decay_parallel.sh amsb_2body+3body_factor100 100 1
 #    ./run_grv_decay_parallel.sh amsb_2body+3body_factor1 1 1
-    ./run_grv_decay_parallel.sh amsb_2body+3body_factor10_2 10 1
+#    ./run_grv_decay_parallel.sh amsb_2body+3body_factor10_2 10 1
+    ./run_grv_decay_parallel.sh natural_test natural 1 1
 #fi
