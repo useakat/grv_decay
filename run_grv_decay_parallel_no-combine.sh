@@ -3,7 +3,9 @@
 run=$1
 model=$2 # cmssm/natural/amsb1/amsb2
 factor=$3 # factor for the generated event number
-mail=$4
+imin=$4 # 1 <= imin <= 41
+imax=$5 # 1 <= imax <= 41
+mail=$6
 ###### MODIFY HERE: running parameters #################
 output=hadron_dist.dat
 jobname=grv_decay
@@ -29,10 +31,8 @@ fi
 ndiv=40
 logflag=1
 
-imin=1
-imax=`expr $ndiv + 1`
-#imin=21
-#imax=41
+#imin=1
+#imax=`expr $ndiv + 1`
 
 mg5dir_2body=grv_decay_def
 mg5dir_3body=grv_2body+n1jetjet
@@ -52,8 +52,6 @@ fi
 ######################################################
 start=`date`
 echo $start
-
-rm -rf par_*
 
 flag_start=0
 i=$imin
@@ -160,11 +158,15 @@ while [ $i -le $imax ];do
 done
 n=$i
 
+if [ ! -e istart.dat ];then
+    echo $istart > istart.dat
+fi
+
 if [ $submit_mode -eq 1 ];then
     ./monitor $work_dir
 fi
 if [ $job_system == "icrr" ];then
-    mv $work_dir/* .
+    cp -rf $work_dir/* .
     rm -rf $work_dir
 fi
 
