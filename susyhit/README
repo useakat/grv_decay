@@ -1,0 +1,26 @@
+* How to geneate AMSB type spectrum (sample point 3 & 4)
+  modify susyhit.in
+    set SUspect-SdecaY-Hdecay-InTerface options to 1
+  prepare suspect2_lha.in
+    cp -rf suspect2_lha.in.amsb1 suspect2_lha.in (for sample point 3)
+    cp -rf suspect2_lha.in.amsb2 suspect2_lha.in (for sample point 4)
+  ./run
+  check and modify slhaspectrum.in appropreately
+  modify susyhit.in
+    set SUspect-SdecaY-Hdecay-InTerface options to 2
+  ./run
+  check and modify susyhit_slha.out 
+    delete unnecessary DECAY table
+
+    add 
+DECAY 1000049 0.000000e+00 # Wgrv
+#===========================================================
+# QUANTUM NUMBERS OF NEW STATE(S) (NON SM PDG CODE)
+# ===========================================================
+Block QNUMBERS 1000049  # grv
+        1 0  # 3 times electric charge
+        2 4  # number of spin states (2S+1)
+        3 1  # colour rep (1: singlet, 3: triplet, 8: octet)
+        4 0  # Particle/Antiparticle distinction (0=own anti)
+
+  cp -rf susyhit_slha.out param_card_temp.dat.***
