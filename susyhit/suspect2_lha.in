@@ -17,7 +17,7 @@ Block SU_ALGO  # !Optional SUSPECT v>=2.3* block: algorithm control parameters
      5    0   # Radiative EWSB imposed (1) or not (0)
      6    0   #  1: M_Hu, M_Hd input (default in constrained models)
 #        (other possibility 0: MA_pole, MU(EWSB) input instead)
-     7    0   #  choice for sparticles masses rad. corr. (=/= h):
+     7    1   #  choice for sparticles masses rad. corr. (=/= h):
 #               2 ->all (recommended, defaut); 1->no R.C. in squarks & gauginos.
      8    0   # 1 (defaut): EWSB scale=(mt_L*mt_R)^(1/2) 
 #         (Or = 0: arbitrary EWSB scale: give EWSB in Block EXTPAR below) 
@@ -68,16 +68,16 @@ Block MINPAR  # specific model input parameters
 #
 Block EXTPAR  # general MSSM input (! IF uncommented, values replace MINPAR ones)
         0     1E+02   # EWSB_scale          
-        1     6.6E+02   # M_1                 
-        2     4.0E+02   # M_2                 
-        3     1.5E+03   # M_3                 
+        1     8.80E+02   # M_1                 
+        2     5.00E+02   # M_2                 
+        3     2.00E+03   # M_3                 
        11     0E+00   # A_t                 
        12     0E+00   # A_b                 
        13     0E+00   # A_tau               
        14     0E+00   # A_u                 
        15     0E+00   # A_d                 
        16     0E+00   # A_e                 
-       23     1.0E+06   # mu(EWSB)            
+       23     7.0E+05   # mu(EWSB)            
        26     1.0E+06   # MA_pole                  
        25     2.0E+00   # tanbeta(MZ)         
        31     1E+06   # M_eL                

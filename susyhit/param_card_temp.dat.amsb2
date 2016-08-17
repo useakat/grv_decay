@@ -125,6 +125,7 @@ BLOCK MASS  # Mass Spectrum
    1000035     1.00000010E+06   # ~chi_40
    1000024     4.99992849E+02   # ~chi_1+
    1000037     1.00000009E+06   # ~chi_2+
+   1000049     MMGRV            # Mgrv
 #
 BLOCK NMIX  # Neutralino Mixing Matrix
   1  1     9.97717312E-06   # N_11

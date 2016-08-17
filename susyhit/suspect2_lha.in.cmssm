@@ -14,6 +14,7 @@ Block SU_ALGO  # !Optional SUSPECT v>=2.3* block: algorithm control parameters
      3    1   # 1: g_1(gut) = g_2(gut) consistently calculated from input
 #   (other possibility is 0: High scale input =HIGH in block EXTPAR below)
      4    2   # RGE accuracy: 1: moderate, 2: accurate (but slower)  
+     5    0   # Radiative EWSB imposed (1) or not (0)
      6    0   #  1: M_Hu, M_Hd input (default in constrained models)
 #        (other possibility 0: MA_pole, MU(EWSB) input instead)
      7    2   #  choice for sparticles masses rad. corr. (=/= h):

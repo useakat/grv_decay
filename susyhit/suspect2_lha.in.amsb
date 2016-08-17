@@ -6,7 +6,7 @@ Block MODSEL  # Select model (with the second parameter):
 #            AMSB                                    :  3
 #            Bottom-up RGE for general MSSM input at EWSB scale: -1
 #            (a specific SuSpect option)
-    1    0   #  mSUGRA 
+    1    0   #  MSSM
 #
 Block SU_ALGO  # !Optional SUSPECT v>=2.3* block: algorithm control parameters
 # !IF block absent (or if any parameter undefined), defaut values are taken  
@@ -77,8 +77,8 @@ Block EXTPAR  # general MSSM input (! IF uncommented, values replace MINPAR ones
        14     0E+00   # A_u                 
        15     0E+00   # A_d                 
        16     0E+00   # A_e                 
-       23     1.0E+06   # mu(EWSB)            
-       26     1.0E+06   # MA_pole                  
+       23     5E+05   # mu(EWSB)            
+       26     1E+06   # MA_pole                  
        25     2.0E+00   # tanbeta(MZ)         
        31     1E+06   # M_eL                
        32     1E+06   # M_muL               
@@ -90,7 +90,7 @@ Block EXTPAR  # general MSSM input (! IF uncommented, values replace MINPAR ones
        42     1E+06   # M_q2L               
        43     1E+06   # M_q3L               
        44     1E+06   # M_uR                
-       45     1E+06   # M_cR                
+       45     1E+06  # M_cR                
        46     1E+06   # M_tR                
        47     1E+06   # M_dR                
        48     1E+06   # M_sR                
