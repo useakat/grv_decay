@@ -16,3 +16,5 @@ grv_n1jetjet
 test_finish.*
 grv_2body+n1jetjet/Cards/param_card_temp.dat
 susyhit/run
+par_*
+rslt_*
