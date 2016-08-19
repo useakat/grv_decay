@@ -49,8 +49,7 @@
 
 2. Modify relevant files
    * run_grv_decay_parallel.sh
-      model: specify the model name
-      chi0mass: change to the LSP mass
+      job_system: kekcc or icrr
       nevents (L35 & L38)
 
 
