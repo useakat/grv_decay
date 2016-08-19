@@ -64,7 +64,8 @@ cp -rf run.sh $rsltdir/.
 cp -rf run_grv_decay_parallel.sh $rsltdir/.
 cp -rf submit_job_grv_decay.sh $rsltdir/.
 cp -rf par_$imin/run_grv_decay.sh $rsltdir/.
-git log --oneline | head -1 | tail -1 > $rsltdir/program.version
+echo `pwd` >  $rsltdir/program.version
+git log --oneline | head -1 | tail -1 >> $rsltdir/program.version
 ###################################################
 
 cd $rsltdir

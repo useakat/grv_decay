@@ -40,12 +40,12 @@
 #    ./run_grv_decay_parallel.sh amsb_2body+3body_factor100 100 1
 #    ./run_grv_decay_parallel.sh amsb_2body+3body_factor1 1 1
 #    ./run_grv_decay_parallel.sh amsb_2body+3body_factor10_2 10 1
-    run=natural_combine
-    model=natural
-    factor=10
+    run=amsb1_factor1
+    model=amsb1
+    factor=1
     rm -rf par_*
-    ./run_grv_decay_parallel_no-combine.sh $run $model $factor 1 20 0
-    ./run_grv_decay_parallel_no-combine.sh $run $model $factor 21 41 0
+    ./run_grv_decay_parallel_no-combine.sh $run $model $factor 1 41 0
+#    ./run_grv_decay_parallel_no-combine.sh $run $model $factor 15 16 0
     istart=`cat istart.dat`
     rm -rf istart.dat
     ./combine_results.sh $run $istart 41 1
